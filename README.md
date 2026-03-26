@@ -1,4 +1,3 @@
-````md
 # Kupunya CV
 
 Aplikasi Android sederhana bertema biodata/CV yang dibuat menggunakan **Jetpack Compose**.  
@@ -67,4 +66,3 @@ TI-C | 245150700111043
 Tambahkan link repository GitHub kamu di sini:
 
 [Link Repository](https://github.com/username/nama-repo)
-````
