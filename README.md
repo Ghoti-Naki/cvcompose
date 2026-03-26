@@ -60,9 +60,3 @@ Project ini dibuat untuk memenuhi **Tugas 2** pada mata kuliah **Pemrograman Apl
 
 **Devanida Ratna Adiningrum**
 TI-C | 245150700111043
-
-## Repository
-
-Tambahkan link repository GitHub kamu di sini:
-
-[Link Repository](https://github.com/username/nama-repo)
