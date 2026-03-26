@@ -18,7 +18,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.weight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -48,16 +47,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.biodata.ui.theme.BiodataTheme
-
-private val weight: Any
-private val weight: Any
-private val weight: Any
+import com.example.cvcompose.ui.theme.BiodataTheme
 
 data class ProfileData(
     val name: String,
@@ -253,9 +249,9 @@ fun HeroSection(profile: ProfileData) {
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(28.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Color.White.copy(alpha = 0.18f)
+            containerColor = Color(0xFFA9C6DC)
         ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
         Column(
             modifier = Modifier.padding(20.dp)
@@ -266,50 +262,57 @@ fun HeroSection(profile: ProfileData) {
                 verticalAlignment = Alignment.Top
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.foto_profil),
+                    painter = painterResource(id = R.drawable.elfoto),
                     contentDescription = "Foto Profil",
                     modifier = Modifier
-                        .size(120.dp)
+                        .size(110.dp)
                         .clip(CircleShape),
                     contentScale = ContentScale.Crop
                 )
 
-                Column(
+                Box(
                     modifier = Modifier.weight(1f)
                 ) {
-                    Text(
-                        text = profile.name,
-                        fontSize = 24.sp,
-                        lineHeight = 30.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.White
-                    )
+                    Column {
+                        Text(
+                            text = profile.name,
+                            fontSize = 20.sp,
+                            lineHeight = 24.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.White,
+                            maxLines = 3
+                        )
 
-                    Spacer(modifier = Modifier.height(10.dp))
+                        Spacer(modifier = Modifier.height(10.dp))
 
-                    Text(
-                        text = profile.headline1,
-                        color = Color.White.copy(alpha = 0.95f),
-                        fontSize = 14.sp
-                    )
-                    Text(
-                        text = profile.headline2,
-                        color = Color.White.copy(alpha = 0.95f),
-                        fontSize = 14.sp
-                    )
-                    Text(
-                        text = profile.headline3,
-                        color = Color.White.copy(alpha = 0.95f),
-                        fontSize = 14.sp
-                    )
+                        Text(
+                            text = profile.headline1,
+                            color = Color.White,
+                            fontSize = 14.sp
+                        )
+                        Text(
+                            text = profile.headline2,
+                            color = Color.White,
+                            fontSize = 14.sp
+                        )
+                        Text(
+                            text = profile.headline3,
+                            color = Color.White,
+                            fontSize = 14.sp
+                        )
 
-                    Spacer(modifier = Modifier.height(12.dp))
+                        Spacer(modifier = Modifier.height(12.dp))
 
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
                         InfoChip("Kelas ${profile.className}")
-                        InfoChip("NIM ${profile.nim}")
+
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        Text(
+                            text = "NIM: ${profile.nim}",
+                            color = Color.White,
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.SemiBold
+                        )
                     }
                 }
             }
@@ -332,20 +335,23 @@ fun InfoChip(text: String) {
     ) {
         Text(
             text = text,
-            modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
+            modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp),
             color = Color.White,
-            fontSize = 12.sp,
+            fontSize = 13.sp,
             fontWeight = FontWeight.SemiBold
         )
     }
 }
 
 @Composable
-fun ContactItem(icon: androidx.compose.ui.graphics.vector.ImageVector, text: String) {
+fun ContactItem(
+    icon: ImageVector,
+    text: String
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 4.dp),
+            .padding(vertical = 6.dp),
         verticalAlignment = Alignment.Top
     ) {
         Icon(
@@ -354,7 +360,9 @@ fun ContactItem(icon: androidx.compose.ui.graphics.vector.ImageVector, text: Str
             tint = Color.White,
             modifier = Modifier.size(18.dp)
         )
-        Spacer(modifier = Modifier.width(10.dp))
+
+        Spacer(modifier = Modifier.width(12.dp))
+
         Text(
             text = text,
             color = Color.White,
